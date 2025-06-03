@@ -59,3 +59,23 @@ ssh -i ~/.ssh/id_ed25519 root@165.22.66.230
 
 ## Performance-Hinweis
 Der Server zeigt eine hohe Swap-Auslastung (1.0 GB von 1.0 GB), was auf Speicherengpässe hindeuten könnte. Eine Überwachung der Performance wird empfohlen.
+
+## Magento 2 MCP Server
+
+### Installation
+```bash
+git clone https://github.com/boldcommerce/magento2-mcp.git
+cd magento2-mcp && npm install
+```
+
+### Claude Code Konfiguration
+```bash
+claude mcp add magento2 /opt/homebrew/bin/node /path/to/magento2-mcp/mcp-server.js \
+  --env MAGENTO_BASE_URL=http://165.22.66.230/rest/V1 \
+  --env MAGENTO_API_TOKEN=f62nq8643aw7v9nomc07g0g1lyj0afg9
+```
+
+### Verfügbare MCP Tools (14)
+- **Produkte (9)**: `get_product_by_sku`, `get_product_by_id`, `search_products`, `advanced_product_search`, `get_product_categories`, `get_related_products`, `get_product_stock`, `get_product_attributes`, `update_product_attribute`
+- **Umsatz (4)**: `get_revenue`, `get_order_count`, `get_product_sales`, `get_revenue_by_country`
+- **Kunden (1)**: `get_customer_ordered_products_by_email`
