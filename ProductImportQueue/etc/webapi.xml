@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!--
+    /**
+    * Webkul Software.
+    *
+    * @category  Webkul
+    * @package   Webkul_ProductImportQueue
+    * @author    Webkul
+    * @copyright Copyright (c) Webkul Software Private Limited (https://webkul.com)
+    * @license   https://store.webkul.com/license.html
+    */
+-->
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+    <route url="/V1/process-csv" method="POST">
+        <service class="Webkul\ProductImportQueue\Api\ProductImportInterface" method="processCsv"/>
+        <resources>
+            <resource ref="Magento_Catalog::products" />
+        </resources>
+    </route>
+
+    <route url="/V1/before-process-csv" method="POST">
+        <service class="Webkul\ProductImportQueue\Api\ProductImportInterface" method="beforeProcessCsv"/>
+        <resources>
+            <resource ref="Magento_Catalog::products" />
+        </resources>
+    </route>
+
+    <route url="/V1/products/attributes/:attributeCode/options" method="PUT">
+        <service class="Webkul\ProductImportQueue\Api\ProductAttributeOptionManagementInterface" method="update" />
+        <resources>
+            <resource ref="Magento_Catalog::attributes_attributes" />
+        </resources>
+    </route>
+    <route url="/V1/products/attributes/:attributeCode/options" method="POST">
+        <service class="Webkul\ProductImportQueue\Api\ProductAttributeOptionManagementInterface" method="add" />
+        <resources>
+            <resource ref="Magento_Catalog::attributes_attributes" />
+        </resources>
+    </route>
+
+    <route url="/V1/categories" method="POST">
+        <service class="Webkul\ProductImportQueue\Api\CategoryRepositoryInterface" method="save" />
+        <resources>
+            <resource ref="Magento_Catalog::categories" />
+        </resources>
+    </route>
+    <route url="/V1/categories/:id" method="PUT">
+        <service class="Webkul\ProductImportQueue\Api\CategoryRepositoryInterface" method="save" />
+        <resources>
+            <resource ref="Magento_Catalog::categories" />
+        </resources>
+    </route>
+    <route url="/V1/validate/version" method="GET">
+        <service class="Webkul\ProductImportQueue\Api\VersionInterface" method="get" />
+        <resources>
+            <resource ref="Magento_Catalog::products" />
+        </resources>
+    </route>
+    <route url="/V1/wkproducts" method="POST">
+        <service class="Webkul\ProductImportQueue\Api\ProductRepositoryInterface" method="save"/>
+        <resources>
+            <resource ref="Magento_Catalog::products" />
+        </resources>
+    </route>
+    <route url="/V1/wkproducts/:sku" method="PUT">
+        <service class="Webkul\ProductImportQueue\Api\ProductRepositoryInterface" method="save" />
+        <resources>
+            <resource ref="Magento_Catalog::products" />
+        </resources>
+    </route>
+    <route url="/V1/products/wk_attributes" method="GET">
+        <service class="Webkul\ProductImportQueue\Api\ProductAttributeInterface" method="getAttribute" />
+        <resources>
+             <resource ref="Magento_Catalog::attributes_attributes" />
+        </resources>
+    </route>
+    <route url="/V1/products/wk_attributesList" method="GET">
+        <service class="Webkul\ProductImportQueue\Api\ProductAttributeInterface" method="getAttributesSetList" />
+        <resources>
+             <resource ref="Magento_Catalog::attributes_attributes" />
+        </resources>
+    </route>
+    <route url="/V1/bundle-products/:sku/options" method="POST">
+        <service class="Webkul\ProductImportQueue\Api\BundleOptionManagementInterface" method="createOption"/>
+        <resources>
+            <resource ref="Magento_Catalog::products"/>
+        </resources>
+    </route>
+    <!-- <route url="/V1/bundle-products/:sku/options/:optionId" method="PUT">
+        <service class="Webkul\ProductImportQueue\Api\BundleOptionManagementInterface" method="updateOption"/>
+        <resources>
+            <resource ref="Magento_Catalog::products"/>
+        </resources>
+    </route> -->
+</routes>

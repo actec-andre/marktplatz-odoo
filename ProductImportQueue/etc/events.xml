@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Webkul
+ * @package    Webkul_ProductImportQueue
+ * @author     Webkul Software Private Limited
+ * @copyright  Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license    https://store.webkul.com/license.html
+ */  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+  <event name="catalog_product_import_bunch_save_after">
+    <observer name="webkul_productimportqueue_productimportafter_observer" instance="Webkul\ProductImportQueue\Observer\ProductImportAfter"/>
+  </event>
+  <event name="catalog_product_load_after">
+    <observer name="add_custom_bundle_data" instance="Webkul\ProductImportQueue\Observer\AddCustomBundleData" />
+  </event>
+</config>

@@ -1,0 +1,32 @@
+Legend
+
++ Features
+- Bugs
+
+-------------------------------- Version 4.0.2 --------------------------------------
+    + Compatible with Magento 2.4.x
+    + fixed DB tables prefix issue, changed table name static to dynamic if prefix is available.
+    + Fixed issue Passing null to parameter, if image url is not passing in product attribute option from Akeneo Side
+
+-------------------------------- Version 4.0.1 --------------------------------------
+    + Compatible with Magento 2.4.x
+    + added functionality to use default values in product
+
+-------------------------------- Version 4.0.0 --------------------------------------
+    + Compatible with Magento 2.4.x
+
+-------------------------------- Version 1.0.4 --------------------------------------
+    + Fixed issue color visual swatches issue.
+
+-------------------------------- Version 1.0.3 --------------------------------------
+    + Compatible with Magento 2.3.x
+    + Fixed issue option label is Zero (0) issue.
+
+-------------------------------- Version 1.0.2 --------------------------------------
+    + Add Function to delete extra images. @depricated from Akeneo Side
+
+-------------------------------- Version 1.0.1 --------------------------------------
+    + Made changes for phpcs
+
+-------------------------------- Version 1.0.0 --------------------------------------
+    + Import product in magento by remote csv import

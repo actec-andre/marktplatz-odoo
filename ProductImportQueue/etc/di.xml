@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Webkul
+ * @package    Webkul_ProductImportQueue
+ * @author     Webkul Software Private Limited
+ * @copyright  Copyright (c) Webkul Software Private Limited (https://webkul.com)
+ * @license    https://store.webkul.com/license.html
+ */  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Webkul\ProductImportQueue\Api\ProductImportInterface" type="Webkul\ProductImportQueue\Model\ProductImport"/>
+    <preference for="Webkul\ProductImportQueue\Api\ProductAttributeOptionManagementInterface" type="Webkul\ProductImportQueue\Model\Product\Attribute\OptionManagement"/>
+    <preference for="Webkul\ProductImportQueue\Api\Data\AttributeOptionInterface" type="Webkul\ProductImportQueue\Model\Entity\Attribute\Option"/>
+    <preference for="Webkul\ProductImportQueue\Api\VersionInterface" type="Webkul\ProductImportQueue\Model\Version"/>
+    <preference for="Magento\Catalog\Model\Product\Attribute\Repository" type="Webkul\ProductImportQueue\Model\Product\Attribute\Repository"/>
+    <preference for="Webkul\ProductImportQueue\Api\CategoryRepositoryInterface" type="Webkul\ProductImportQueue\Model\CategoryRepository"/>
+    <preference for="Magento\Swatches\Model\Plugin\EavAttribute" type="Webkul\ProductImportQueue\Model\Plugin\EavAttribute"/>
+    <preference for="Magento\CatalogImportExport\Model\Import\Uploader" type="Webkul\ProductImportQueue\Model\Import\Uploader"/>
+    <preference for="Magento\DownloadableImportExport\Model\Import\Product\Type\Downloadable" type="Webkul\ProductImportQueue\Model\Import\Product\Type\Downloadable"/>
+    <!-- Get product Attribute with group code -->
+    <preference for="Webkul\ProductImportQueue\Api\ProductAttributeInterface" type="Webkul\ProductImportQueue\Model\ProductAttribute"/>
+    <preference for="Webkul\ProductImportQueue\Api\BundleOptionManagementInterface" type="Webkul\ProductImportQueue\Model\BundleOptionManagement"/>
+    <type name="Webkul\ProductImportQueue\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Webkul\ProductImportQueue\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">customLogHandler</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Webkul\ProductImportQueue\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Webkul\ProductImportQueue\Api\ProductRepositoryInterface" type="Webkul\ProductImportQueue\Model\ProductRepository"/>
+     <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="webkul_product_import_queue_product_repository" type="Webkul\ProductImportQueue\Plugin\ProductRepositoryPlugin" sortOrder="10"/>
+    </type>
+    <!-- <type name="Magento\Catalog\Api\ProductRepositoryInterface">
+        <plugin name="customize_product_response_plugin" type="Webkul\ProductImportQueue\Plugin\BundleProductRepositoryPlugin" />
+    </type> -->
+</config>

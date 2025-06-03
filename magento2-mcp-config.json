@@ -1,0 +1,10 @@
+{
+  "magento2": {
+    "command": "/opt/homebrew/bin/node",
+    "args": ["/Users/andre/Documents/dev/claude/marktplatz-odoo/magento2-mcp/mcp-server.js"],
+    "env": {
+      "MAGENTO_BASE_URL": "http://165.22.66.230/rest/V1",
+      "MAGENTO_API_TOKEN": "f62nq8643aw7v9nomc07g0g1lyj0afg9"
+    }
+  }
+}
