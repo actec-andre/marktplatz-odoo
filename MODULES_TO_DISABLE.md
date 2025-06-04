@@ -1,39 +1,147 @@
-# Magento 2 Modules to Disable Analysis
+# Magento 2 Module Analysis for Headless Setup
 
-## Goal
-Keep only modules required for:
-- Admin Dashboard functionality
-- MagnaLista marketplace integration
-- Product management
-- Order management
-- API functionality
+## Project Requirements
+- Admin Dashboard: REQUIRED
+- API for Akeneo PIM Integration: REQUIRED  
+- MagnaLista marketplace integration: REQUIRED
+- Product management: REQUIRED
+- Order management: REQUIRED
+- No customer-facing frontend: NOT NEEDED
 
-## Modules That Can Be Safely Disabled
+## SAFE TO DISABLE - Frontend-Only Modules (Currently Enabled)
 
-### 1. Frontend/Theme Related Modules
+### 1. Customer Experience Modules
 ```bash
-# Core frontend modules
-Magento_Theme
-Magento_Cookie
-Magento_PageCache
-Magento_LayeredNavigation
-Magento_Swagger
-Magento_SwaggerWebapi
-Magento_SwaggerWebapiAsync
+# Newsletter functionality
+Magento_Newsletter
+Magento_NewsletterGraphQl
 
-# Page Builder frontend
-Magento_PageBuilder
-Magento_PageBuilderAnalytics
-Magento_CatalogPageBuilderAnalytics
-Magento_CmsPageBuilderAnalytics
-Magento_PageBuilderAdminAnalytics
+# Product reviews
+Magento_Review
+Magento_ReviewAnalytics
+Magento_ReviewGraphQl
+
+# Wishlist functionality  
+Magento_Wishlist
+Magento_WishlistAnalytics
+Magento_WishlistGraphQl
+
+# Send to friend
+Magento_SendFriend
+Magento_SendFriendGraphQl
+
+# Contact forms
+Magento_Contact
+Magento_ContactGraphQl
+
+# Product comparison
+Magento_CompareListGraphQl
 ```
 
-### 2. Customer Account Related Modules
+### 2. Frontend UI Features  
 ```bash
-# Customer frontend functionality
+# Layered navigation for filters
+Magento_LayeredNavigation
+
+# Product swatches (color/size)
+Magento_Swatches
+Magento_SwatchesGraphQl
+Magento_SwatchesLayeredNavigation
+
+# Cookie notice/management
+Magento_Cookie
+
+# Persistent shopping cart
+Magento_Persistent
+```
+
+### 3. Analytics & Tracking Modules
+```bash
+# Frontend analytics
+Magento_Analytics
+Magento_CustomerAnalytics
+Magento_QuoteAnalytics
+Magento_SalesAnalytics
+Magento_NewRelicReporting
+```
+
+### 4. ReCaptcha Frontend Modules
+```bash
+# All frontend form captchas
+Magento_ReCaptchaCheckout
+Magento_ReCaptchaCheckoutSalesRule
+Magento_ReCaptchaContact
+Magento_ReCaptchaCustomer
+Magento_ReCaptchaFrontendUi
+Magento_ReCaptchaNewsletter
+Magento_ReCaptchaReview
+Magento_ReCaptchaSendFriend
+Magento_ReCaptchaStorePickup
+Magento_ReCaptchaWishlist
+```
+
+### 5. GraphQL Modules (If Not Using GraphQL API)
+```bash
+# Base GraphQL
+Magento_GraphQl
+Magento_GraphQlCache
+Magento_GraphQlNewRelic
+Magento_GraphQlResolverCache
+Magento_GraphQlServer
+Magento_AdminGraphQlServer
+
+# All GraphQL endpoints
+Magento_EavGraphQl
+Magento_StoreGraphQl
+Magento_DirectoryGraphQl
+Magento_CatalogGraphQl
+Magento_CatalogCustomerGraphQl
+Magento_CatalogCmsGraphQl
+Magento_CatalogUrlRewriteGraphQl
+Magento_CatalogRuleGraphQl
+Magento_CatalogInventoryGraphQl
+Magento_BundleGraphQl
+Magento_ConfigurableProductGraphQl
+Magento_GroupedProductGraphQl
+Magento_DownloadableGraphQl
 Magento_CustomerDownloadableGraphQl
 Magento_CustomerGraphQl
+Magento_CheckoutAgreementsGraphQl
+Magento_CmsGraphQl
+Magento_CmsUrlRewriteGraphQl
+Magento_ContactGraphQl
+Magento_GiftMessageGraphQl
+Magento_IntegrationGraphQl
+Magento_InventoryGraphQl
+Magento_InventoryQuoteGraphQl
+Magento_InventoryInStorePickupGraphQl
+Magento_InventoryInStorePickupQuoteGraphQl
+Magento_LoginAsCustomerGraphQl
+Magento_NewsletterGraphQl
+Magento_OrderCancellationGraphQl
+Magento_PaymentGraphQl
+Magento_PaymentServicesPaypalGraphQl
+Magento_PaypalGraphQl
+Magento_QuoteGraphQl
+Magento_ReCaptchaWebapiGraphQl
+Magento_RelatedProductGraphQl
+Magento_ReviewGraphQl
+Magento_SalesGraphQl
+Magento_SalesRuleGraphQl
+Magento_SendFriendGraphQl
+Magento_ServicesIdGraphQlServer
+Magento_SwatchesGraphQl
+Magento_TaxGraphQl
+Magento_UrlRewriteGraphQl
+Magento_VaultGraphQl
+Magento_WeeeGraphQl
+Magento_WishlistGraphQl
+Magento_CompareListGraphQl
+```
+
+### 6. Login As Customer Feature
+```bash
+# Complete suite of LoginAsCustomer modules
 Magento_LoginAsCustomer
 Magento_LoginAsCustomerAdminUi
 Magento_LoginAsCustomerApi
@@ -44,329 +152,240 @@ Magento_LoginAsCustomerLog
 Magento_LoginAsCustomerPageCache
 Magento_LoginAsCustomerQuote
 Magento_LoginAsCustomerSales
-Magento_Persistent
-Magento_Wishlist
-Magento_WishlistAnalytics
-Magento_WishlistGraphQl
-Magento_CompareListGraphQl
 ```
 
-### 3. Checkout/Cart Related Modules
+### 7. Other Frontend Modules
 ```bash
-# Checkout and cart frontend
-Magento_Checkout
-Magento_CheckoutAgreements
-Magento_CheckoutAgreementsGraphQl
+# Multiple shipping addresses
 Magento_Multishipping
+
+# One-click purchase
 Magento_InstantPurchase
-Magento_AdvancedCheckout
-Magento_InventoryAdvancedCheckout
-Magento_InventoryInStorePickupMultishipping
-Magento_QuoteBundleOptions
-Magento_QuoteConfigurableOptions
-Magento_QuoteDownloadableLinks
-```
 
-### 4. CMS/Content Blocks Modules
-```bash
-# CMS frontend functionality
-Magento_CmsGraphQl
-Magento_CmsUrlRewrite
-Magento_CmsUrlRewriteGraphQl
-Magento_Contact
-Magento_ContactGraphQl
-Magento_Sitemap
-```
-
-### 5. Search/Catalog Frontend Modules
-```bash
-# Search and catalog frontend
-Magento_CatalogSearch
-Magento_AdvancedSearch
-Magento_Elasticsearch
-Magento_Elasticsearch7
-Magento_InventoryElasticsearch
-Magento_CatalogGraphQl
-Magento_CatalogCustomerGraphQl
-Magento_CatalogCmsGraphQl
-Magento_CatalogUrlRewriteGraphQl
-Magento_InventoryCatalogFrontendUi
-Magento_InventoryCatalogSearch
-Magento_InventoryCatalogSearchBundleProduct
-Magento_InventoryCatalogSearchConfigurableProduct
-```
-
-### 6. Payment Gateways (Keep only OfflinePayments for MagnaLista)
-```bash
-# Payment modules to disable
-Magento_Paypal
-Magento_PaypalGraphQl
-Magento_PaypalCaptcha
-PayPal_Braintree
-PayPal_BraintreeCustomerBalance
-PayPal_BraintreeGiftCardAccount
-PayPal_BraintreeGiftWrapping
-PayPal_BraintreeGraphQl
-Magento_CardinalCommerce
-Magento_PaymentGraphQl
-Magento_PaymentServicesDashboard
-Magento_PaymentServicesBase
-Magento_PaymentServicesPaypal
-Magento_PaymentServicesPaypalGraphQl
-Magento_PaymentServicesSaaSExport
-# Keep: Magento_OfflinePayments (for bank transfer, cash on delivery)
-```
-
-### 7. Shipping Methods (Keep only OfflineShipping for MagnaLista)
-```bash
-# Shipping modules to disable
-Magento_Dhl
-Magento_Fedex
-Magento_Ups
-Magento_Usps
-Magento_InventoryInStorePickup
-Magento_InventoryInStorePickupAdminUi
-Magento_InventoryInStorePickupApi
-Magento_InventoryInStorePickupFrontend
-Magento_InventoryInStorePickupGraphQl
-Magento_InventoryInStorePickupQuote
-Magento_InventoryInStorePickupQuoteGraphQl
-Magento_InventoryInStorePickupSales
-Magento_InventoryInStorePickupSalesApi
-Magento_InventoryInStorePickupSalesAdminUi
-Magento_InventoryInStorePickupShipping
-Magento_InventoryInStorePickupShippingAdminUi
-Magento_InventoryInStorePickupShippingApi
-Magento_InventoryInStorePickupWebapiExtension
-Magento_ReCaptchaStorePickup
-# Keep: Magento_OfflineShipping (for flat rate, table rates)
-```
-
-### 8. Email Templates for Customers
-```bash
-# Email and newsletter modules
-Magento_Email
-Magento_Newsletter
-Magento_NewsletterGraphQl
-Magento_SendFriend
-Magento_SendFriendGraphQl
-Magento_ReCaptchaNewsletter
-Magento_ReCaptchaSendFriend
-```
-
-### 9. Additional Frontend-Only Modules
-```bash
-# Reviews and ratings
-Magento_Review
-Magento_ReviewAnalytics
-Magento_ReviewGraphQl
-Magento_ReCaptchaReview
-
-# Product alerts
+# Price/stock alerts
 Magento_ProductAlert
-Magento_InventoryProductAlert
 
-# Gift functionality
-Magento_GiftMessage
-Magento_GiftMessageGraphQl
-
-# Downloadable products frontend
-Magento_DownloadableGraphQl
-
-# Bundle products frontend
-Magento_BundleGraphQl
-
-# Configurable products frontend
-Magento_ConfigurableProductGraphQl
-
-# Grouped products frontend
-Magento_GroupedProductGraphQl
-
-# Related products
-Magento_RelatedProductGraphQl
-
-# Swatches frontend
-Magento_SwatchesGraphQl
-Magento_SwatchesLayeredNavigation
-Magento_InventorySwatchesFrontendUi
+# XML sitemap generation
+Magento_Sitemap
 
 # RSS feeds
 Magento_Rss
 
-# Google tracking
-Magento_GoogleAdwords
-Magento_GoogleAnalytics
-Magento_GoogleGtag
-Magento_GoogleOptimizer
-
-# Product video
-Magento_ProductVideo
-
-# Widget functionality
-Magento_CatalogWidget
-
-# ReCaptcha frontend modules
-Magento_ReCaptchaCheckout
-Magento_ReCaptchaCheckoutSalesRule
-Magento_ReCaptchaContact
-Magento_ReCaptchaCustomer
-Magento_ReCaptchaFrontendUi
-Magento_ReCaptchaWishlist
-
-# Analytics
-Magento_Analytics
-Magento_AdminAnalytics
-Magento_CatalogAnalytics
-Magento_CustomerAnalytics
-Magento_QuoteAnalytics
-Magento_SalesAnalytics
-
-# Sample data
-Magento_SampleData
-
 # Robots.txt
 Magento_Robots
 
-# Weee (tax) frontend
-Magento_WeeeGraphQl
+# Catalog widgets for CMS
+Magento_CatalogWidget
 
-# Tax frontend
-Magento_TaxGraphQl
-
-# Sales frontend
-Magento_InventorySalesFrontendUi
-
-# Inventory frontend
-Magento_InventoryConfigurableProductFrontendUi
-Magento_InventoryWishlist
-
-# Store frontend GraphQL
-Magento_StoreGraphQl
-Magento_DirectoryGraphQl
-Magento_ThemeGraphQl
-
-# Quote GraphQL
-Magento_QuoteGraphQl
-Magento_InventoryQuoteGraphQl
-
-# Sales GraphQL
-Magento_SalesGraphQl
-Magento_SalesRuleGraphQl
-
-# Vault GraphQL
-Magento_VaultGraphQl
-
-# Currency frontend
-Magento_CurrencySymbol
-
-# URL rewrites frontend
-Magento_UrlRewriteGraphQl
-
-# EAV GraphQL
-Magento_EavGraphQl
-
-# Order cancellation UI
-Magento_OrderCancellationGraphQl
-Magento_OrderCancellationUi
+# PayPal captcha
+Magento_PaypalCaptcha
 ```
 
-## Modules That MUST Stay Enabled
+### 8. In-Store Pickup Frontend
+```bash
+Magento_InventoryInStorePickupQuote
+Magento_InventoryInStorePickupSales
+Magento_InventoryInStorePickupMultishipping
+Magento_InventoryInStorePickupQuoteGraphQl
+Magento_InventoryInStorePickupGraphQl
+```
 
-### Core System Modules
-- Magento_Store
-- Magento_Config
-- Magento_Directory
-- Magento_Backend
-- Magento_User
-- Magento_Authorization
-- Magento_Security
-- Magento_Integration
-- Magento_Webapi
-- Magento_WebapiAsync
-- Magento_WebapiSecurity
+### 9. Inventory Frontend Modules
+```bash
+Magento_InventoryWishlist
+```
 
-### Product Management
-- Magento_Catalog
-- Magento_CatalogInventory
-- Magento_CatalogImportExport
-- Magento_CatalogRule
-- Magento_CatalogUrlRewrite
-- Magento_Eav
-- Magento_Indexer
-- Magento_ImportExport
-- Magento_AdvancedPricingImportExport
+## KEEP - Required for Admin/API/Core
 
-### Order Management
-- Magento_Sales
-- Magento_SalesSequence
-- Magento_SalesRule
-- Magento_SalesInventory
-- Magento_Quote
-- Magento_Payment
-- Magento_OfflinePayments
-- Magento_Shipping
-- Magento_OfflineShipping
+### Core System
+- `Magento_Store` - Core store functionality
+- `Magento_Config` - Configuration system
+- `Magento_Backend` - Admin backend
+- `Magento_User` - Admin users
+- `Magento_Authorization` - Access control
+- `Magento_Security` - Security features
+- `Magento_Integration` - API integrations
+
+### Catalog & Products
+- `Magento_Catalog` - Product catalog
+- `Magento_CatalogInventory` - Inventory management
+- `Magento_CatalogRule` - Catalog price rules
+- `Magento_CatalogSearch` - Search functionality
+- `Magento_CatalogImportExport` - Import/export
+- `Magento_Eav` - Entity-Attribute-Value
+- `Magento_Indexer` - Indexing system
+
+### Sales & Orders
+- `Magento_Sales` - Order management
+- `Magento_Quote` - Quote system
+- `Magento_SalesSequence` - Order numbering
+- `Magento_SalesRule` - Cart price rules
+- `Magento_Checkout` - Checkout process (API)
+- `Magento_Payment` - Payment methods
+- `Magento_Shipping` - Shipping methods
+
+### Customer (For Orders)
+- `Magento_Customer` - Customer management
+- `Magento_CustomerImportExport` - Customer import/export
+
+### Admin Features
+- `Magento_AdminNotification` - Admin notifications
+- `Magento_Backup` - Database backup
+- `Magento_Reports` - Admin reports
+- `Magento_ImportExport` - Import/export functionality
+
+### API & Integration
+- `Magento_Webapi` - REST API
+- `Magento_WebapiAsync` - Async API
+- `Magento_WebapiSecurity` - API security
+- `Redgecko_Magnalister` - MagnaLista integration
+- `Webkul_ProductImportQueue` - Product import queue
+
+### Search (Currently MySQL)
+- `Magento_Search` - Base search functionality
+- `Magento_AdvancedSearch` - Advanced search
+- `Magento_Elasticsearch` - Elasticsearch base (keep for future)
+- `Magento_Elasticsearch7` - Elasticsearch 7 (keep for future)
+
+### Media & Content
+- `Magento_MediaStorage` - Media storage
+- `Magento_Cms` - CMS pages (for admin)
+
+### Required Infrastructure
+- `Magento_Cron` - Cron jobs
+- `Magento_MessageQueue` - Message queue
+- `Magento_AsynchronousOperations` - Async operations
+- `Magento_Deploy` - Deployment
+
+## UNCERTAIN - Need Analysis
 
 ### Inventory Management
-- Magento_Inventory*Api modules
-- Magento_Inventory*AdminUi modules
-- Core inventory modules (without frontend/GraphQL)
+Most inventory modules should be kept for proper stock management, but some frontend-specific ones could potentially be disabled:
+- `Magento_InventoryWishlist` - Wishlist inventory reservation
 
-### Required for MagnaLista
-- Redgecko_Magnalister
-- Magento_Tax
-- Magento_TaxImportExport
-- Magento_Msrp
-- Magento_ConfigurableProduct
-- Magento_Bundle
-- Magento_GroupedProduct
-- Magento_Downloadable
-- Magento_Vault
+### Data Export
+- `Magento_DataExporter` - Check if needed for integrations
+- `Magento_SalesDataExporter` - Check if needed for integrations
+- `Magento_StoreDataExporter` - Check if needed for integrations
 
-### Media and Content Management
-- Magento_MediaStorage
-- Magento_MediaGallery
-- Magento_MediaGalleryApi
-- Magento_MediaGalleryUi
-- Magento_MediaGalleryUiApi
-- Magento_Cms (keep for admin content management)
+### Adobe Services
+- `Magento_AdobeIms` - Adobe IMS integration
+- `Magento_AdobeStockAdminUi` - Adobe Stock in admin
+- Various Adobe Stock modules - Check if using Adobe Stock
 
-### System Infrastructure
-- Magento_Cron
-- Magento_MessageQueue
-- Magento_AsynchronousOperations
-- Magento_ApplicationPerformanceMonitor
-- Magento_Deploy
-- Magento_Variable
-- Magento_Translation
-- Magento_RequireJs
-- Magento_Ui
+### URL Management
+- `Magento_UrlRewrite` - URL rewrites (might be needed for API)
+- `Magento_CatalogUrlRewrite` - Catalog URL rewrites
 
-## Disable Command Template
+### Other
+- `Magento_ServicesConnector` - Services connector
+- `Magento_ServicesId` - Services ID
+- `Magento_SaaSCommon` - SaaS common
+
+## Disable Commands
+
+To disable the safe modules, run these commands on the server:
 
 ```bash
-# SSH to server and disable modules in batches
-ssh -i ~/.ssh/id_andre_sh root@165.22.66.230 "cd /var/www/html && php bin/magento module:disable \
-MODULE_NAME_1 \
-MODULE_NAME_2 \
-MODULE_NAME_3"
+# Connect to server
+ssh -i ~/.ssh/id_ed25519 root@165.22.66.230
 
-# After disabling, run setup upgrade and clear cache
-ssh -i ~/.ssh/id_andre_sh root@165.22.66.230 "cd /var/www/html && php bin/magento setup:upgrade && php bin/magento cache:clean && php bin/magento cache:flush"
+# Navigate to Magento root
+cd /var/www/html
+
+# Disable frontend modules (run in batches to avoid issues)
+php bin/magento module:disable \
+Magento_Newsletter \
+Magento_NewsletterGraphQl \
+Magento_Review \
+Magento_ReviewAnalytics \
+Magento_ReviewGraphQl \
+Magento_Wishlist \
+Magento_WishlistAnalytics \
+Magento_WishlistGraphQl \
+Magento_SendFriend \
+Magento_SendFriendGraphQl
+
+php bin/magento module:disable \
+Magento_Contact \
+Magento_ContactGraphQl \
+Magento_CompareListGraphQl \
+Magento_LayeredNavigation \
+Magento_Swatches \
+Magento_SwatchesGraphQl \
+Magento_SwatchesLayeredNavigation \
+Magento_Cookie \
+Magento_Persistent
+
+php bin/magento module:disable \
+Magento_Analytics \
+Magento_CustomerAnalytics \
+Magento_QuoteAnalytics \
+Magento_SalesAnalytics \
+Magento_NewRelicReporting
+
+# Disable ReCaptcha modules
+php bin/magento module:disable \
+Magento_ReCaptchaCheckout \
+Magento_ReCaptchaCheckoutSalesRule \
+Magento_ReCaptchaContact \
+Magento_ReCaptchaCustomer \
+Magento_ReCaptchaFrontendUi \
+Magento_ReCaptchaNewsletter \
+Magento_ReCaptchaReview \
+Magento_ReCaptchaSendFriend \
+Magento_ReCaptchaStorePickup \
+Magento_ReCaptchaWishlist
+
+# Disable LoginAsCustomer modules
+php bin/magento module:disable \
+Magento_LoginAsCustomer \
+Magento_LoginAsCustomerAdminUi \
+Magento_LoginAsCustomerApi \
+Magento_LoginAsCustomerAssistance \
+Magento_LoginAsCustomerFrontendUi \
+Magento_LoginAsCustomerGraphQl \
+Magento_LoginAsCustomerLog \
+Magento_LoginAsCustomerPageCache \
+Magento_LoginAsCustomerQuote \
+Magento_LoginAsCustomerSales
+
+# Disable other frontend modules
+php bin/magento module:disable \
+Magento_Multishipping \
+Magento_InstantPurchase \
+Magento_ProductAlert \
+Magento_Sitemap \
+Magento_Rss \
+Magento_Robots \
+Magento_CatalogWidget \
+Magento_PaypalCaptcha
+
+# Disable In-Store Pickup frontend modules
+php bin/magento module:disable \
+Magento_InventoryInStorePickupQuote \
+Magento_InventoryInStorePickupSales \
+Magento_InventoryInStorePickupMultishipping \
+Magento_InventoryInStorePickupQuoteGraphQl \
+Magento_InventoryInStorePickupGraphQl
+
+# After disabling, run:
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento cache:clean
+php bin/magento cache:flush
 ```
 
 ## Important Notes
 
-1. **Test in staging first**: Always test module disabling in a staging environment
-2. **Backup before changes**: Create a full backup before disabling modules
-3. **Disable in batches**: Disable modules in small batches to identify issues
-4. **Monitor logs**: Check system.log and exception.log after each batch
-5. **MagnaLista dependencies**: Some modules might be required by MagnaLista even if not obvious
+1. **GraphQL Modules**: Only disable if you're certain you're not using GraphQL API. If using REST API only, these are safe to disable.
 
-## Recommended Approach
+2. **Analytics Modules**: Safe to disable if you don't need frontend analytics. Admin reports will still work.
 
-1. Start with obvious frontend modules (themes, customer account, checkout)
-2. Test MagnaLista functionality after each batch
-3. Keep payment and shipping modules that MagnaLista might use for order import
-4. Monitor admin functionality and API endpoints
-5. Document any modules that cause issues when disabled
+3. **ReCaptcha Modules**: Keep `Magento_ReCaptchaAdminUi`, `Magento_ReCaptchaUser`, and base modules for admin security.
+
+4. **Test in Staging**: Always test module disabling in a staging environment first.
+
+5. **Backup**: Create a full backup before disabling modules.
+
+6. **Dependencies**: Some modules may have dependencies. Magento will warn if you try to disable a required module.

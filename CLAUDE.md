@@ -3,6 +3,20 @@
 ## Projekt-Übersicht
 Dieses Projekt verwaltet eine Magento 2.4.7 E-Commerce-Installation mit MagnaLista-Integration für Marktplatzanbindungen.
 
+## Claude-Expertise & Fähigkeiten
+- **Magento 2.4.7 Administration Expert**: Spezialisiert auf E-Commerce-Plattform-Management, Modul-Konfiguration, Performance-Optimierung und Troubleshooting
+- **Erweiterte Analysemethoden**: Nutzt context7 für tiefgreifende Codebase-Analyse und deep-think für komplexe Problemlösungen
+- **SSH-Verbindungsmanagement**: Stabile Remote-Administration mit automatischer Verbindungsoptimierung
+- **OpenSearch/Elasticsearch Migration**: Expertise in Suchmaschinen-Konfiguration und Index-Management
+- **DI-Kompilierung & Cache-Management**: Dependency Injection Troubleshooting und Performance-Tuning
+
+### Wichtige SSH-Konfiguration
+**KRITISCH**: Alle SSH-Befehle müssen mit `sleep 3` vor dem Aufruf ausgeführt werden:
+```bash
+sleep 3 && ssh -i ~/.ssh/id_ed25519 root@165.22.66.230 "cd /var/www/html && [command]"
+```
+Dies verhindert Verbindungsabbrüche und gewährleistet stabile Remote-Operationen.
+
 ## Server-Zugang
 - **Server**: root@165.22.66.230
 - **SSH-Key (MacBook Air)**: ~/.ssh/id_andre_sh
