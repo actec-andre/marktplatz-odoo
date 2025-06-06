@@ -8,8 +8,9 @@ Dieses Projekt dokumentiert die Integration eines Magento-Shops mit MagnaLista f
 - **Provider**: DigitalOcean
 - **Betriebssystem**: Ubuntu 22.04.5 LTS
 - **CPU**: 2 Cores (DO-Premium-AMD)
-- **RAM**: 3.8 GB
-- **Speicher**: 78 GB (22 GB belegt)
+- **RAM**: 7.8 GB (4.5 GB used, 2.8 GB available)
+- **Swap**: 3.0 GB (6 MB used - optimiert)
+- **Speicher**: 78 GB (24 GB belegt, 54 GB verfügbar)
 - **SSH-Zugang**: root@165.22.66.230 (SSH-Key auf Mac konfiguriert)
 
 ## Technischer Stack
@@ -18,6 +19,7 @@ Dieses Projekt dokumentiert die Integration eines Magento-Shops mit MagnaLista f
 - **Webserver**: Nginx 1.18.0
 - **PHP**: 8.2.28 mit OPcache
 - **MySQL**: 8.0.42
+- **Elasticsearch**: 8.18.0 (aktiv, 512MB Heap)
 
 ### Magento-Shop
 - **Version**: Magento 2.4.7-p4
@@ -57,8 +59,13 @@ Dieses Projekt dokumentiert die Integration eines Magento-Shops mit MagnaLista f
 ssh -i ~/.ssh/id_ed25519 root@165.22.66.230
 ```
 
-## Performance-Hinweis
-Der Server zeigt eine hohe Swap-Auslastung (1.0 GB von 1.0 GB), was auf Speicherengpässe hindeuten könnte. Eine Überwachung der Performance wird empfohlen.
+## System-Status ✅
+- **Performance**: Optimiert (Swap-Nutzung unter 1%)
+- **Suchmaschine**: Elasticsearch7 aktiv und stabil
+- **Admin Dashboard**: Vollständig funktional mit CSS
+- **API**: REST API voll erreichbar (alle Endpoints getestet)
+- **Sentry Integration**: Aktiv für Error Monitoring
+- **Frontend**: Deaktiviert (Headless-Konfiguration)
 
 ## Magento 2 MCP Server
 
