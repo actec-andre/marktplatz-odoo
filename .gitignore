@@ -1,0 +1,83 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnp.*
+.yarn/
+.yarn-integrity
+*.tgz
+
+# Build output
+dist/
+build/
+out/
+.output/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+lerna-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+.temp/
+*.tmp
+*.temp
+
+# MCP specific
+claude_desktop_config.json
+
+# Magento/PHP
+vendor/
+generated/
+var/
+pub/static/
+pub/media/
+app/etc/env.php
+*.zip
+*.tar.gz
+magento_backup/
+
+# Composer
+composer.lock
+
+# IDEs & OS
+.vscode/
+.idea/
+*.iml
+*.iws
+*.ipr
+.project
+.classpath
+.settings/
+*.sublime-workspace
+.c9/
+.netbeans/
+.DS_Store
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup & Archive
+*.bak
+*.swp
+*.swo
+*~
+*.orig
+
+# Lokale/benutzerspezifische Einstellungen
+.claude/
+settings.local.json 
