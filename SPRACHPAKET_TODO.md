@@ -1,7 +1,7 @@
 # Sprachpaket Installation - TODO
 
 ## 📋 Aufgabe
-Deutsche Sprachpakete für Magento vollständig installieren
+Deutsche Sprachpakete für Magento vollständig installierenj
 
 ## 🎯 Status
 - ✅ System bereits auf `de_DE` konfiguriert
