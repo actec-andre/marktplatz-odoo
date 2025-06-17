@@ -291,6 +291,41 @@ docker-compose exec -T fpm top -bn1
 
 **WICHTIG**: Server 68.183.68.44 und 167.172.170.235 haben NUR LESE-RECHTE!
 
+## KRITISCHES PROBLEM IDENTIFIZIERT: Fehlende DAM-Module (2025-06-17)
+
+### **ROOT CAUSE: Download-Modul fehlt in Magento**
+**Problem**: Akeneo-Jobs laufen erfolgreich, aber Datasheet-Attribute werden nicht in Magento importiert
+**Ursache**: Funktionierender Shop verwendet `experius/module-wysiwygdownloads` für Download-Funktionalität
+
+### **Akeneo DAM Bundle (aktiv)**:
+- `src/Webkul/DamBundle/Controller/MediaController.php` - Datasheet Downloads
+- `src/Webkul/DamBundle/Normalizer/ExternalApi/ProductNormalizer.php` - Export-Logik
+- Behandelt Media/Asset-Attribute und Downloads
+
+### **Solarcraft.isotoxin.com (funktionierend)**:
+- `experius/module-wysiwygdownloads: 1.2.3` - **WYSIWYG Download-Funktionalität**
+- Ermöglicht PDF/DOC/Excel-Downloads auf Produktseiten
+- Downloads-Sektion mit Englisch/Deutsch Datenblättern
+
+### **Actec.shop (fehlend)**:
+- `app/code/Webkul/ProductImportQueue/` - NUR Basis-Import
+- **FEHLT**: `experius/module-wysiwygdownloads` Modul
+- Keine Download-Funktionalität verfügbar
+
+### **LÖSUNG: Experius Downloads Modul installieren**:
+```bash
+composer require experius/module-wysiwygdownloads
+php bin/magento setup:upgrade
+php bin/magento cache:flush
+```
+
+### **Funktionierender Shop: solarcraft.isotoxin.com (167.172.170.235)**:
+- **SSH-Zugang**: `ssh root@167.172.170.235`
+- **Magento-Pfad**: `/mnt/volume_fra1_01/www/solarcraft.isotoxin.com/`
+- **Webkul Module**: `app/code/Webkul/ProductImportQueue/`
+- **Bestätigt**: Downloads-Sektion funktioniert (Englisch/Deutsch Datenblätter)
+- **Nur Downloadable.php gefunden**: Vollständige DAM-Analyse erforderlich
+
 ## Nächste Schritte
 1. ✅ **Magento 2.4.8-p1** Installation abgeschlossen
 2. ✅ **Webkul ProductImportQueue 4.0.0** Migration erfolgreich
@@ -299,5 +334,6 @@ docker-compose exec -T fpm top -bn1
 5. ✅ **API-Endpunkte** getestet und Akeneo-kompatibel
 6. ✅ **OAuth Bearer Token** für Magento 2.4.4+ konfiguriert (KRITISCHER FIX)
 7. ✅ **Akeneo Storage-Bereinigung** durchgeführt (17GB freigemacht)
-8. **MagnaLister Migration** aus dem Backup (ausstehend)
-9. **Akeneo-Integration** final testen
+8. ✅ **Problem identifiziert**: Fehlende DAM-Module in Magento
+9. **Webkul DAM Bundle für Magento** installieren (KRITISCH)
+10. **MagnaLister Migration** aus dem Backup (ausstehend)
